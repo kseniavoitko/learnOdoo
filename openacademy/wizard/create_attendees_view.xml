@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_create_attendees_form">
+            <field name="name">create.attendees.wizard.form</field>
+            <field name="model">create.attendees.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="session_id"/>
+                        <field name="attendee_ids"/>
+                    </group>
+                    <footer>
+                        <button string="Create" name = "action_create_attendees" class="btn-primary" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_create_attendees">
+            <field name="name">Create attendees</field>
+            <field name="res_model">create.attendees.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="model_academy_session"/>
+        </record>
+    </data>
+</odoo>

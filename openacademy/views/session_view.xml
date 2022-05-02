@@ -1,0 +1,126 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_academy_session_calendar">
+            <field name="name">academy.session.calendar</field>
+            <field name="model">academy.session</field>
+            <field name="arch" type="xml">
+                <calendar string="Session_calendar" date_start="start_date" date_stop="end_date" color='course_id'>
+                    <field name="name"/>
+                    <field name="course_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="instructor"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_academy_session_graph">
+            <field name="name">academy.session.graph</field>
+            <field name="model">academy.session</field>
+            <field name="arch" type="xml">
+                <graph string="Graph">
+                    <field name="course_id"/>
+                    <field name="attendees_count" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_academy_session_kanban">
+            <field name="name">academy.session.kanban</field>
+            <field name="model">academy.session</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="course_id" sample="1">
+                    <field name="course_id"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li>
+                                            <field name="name"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_academy_session_tree">
+            <field name="name">academy.session.tree</field>
+            <field name="model">academy.session</field>
+            <field name="arch" type="xml">
+                <tree decoration-info="duration&lt;5" decoration-danger="duration&gt;15">
+                    <field name="active"/>
+                    <field name="name"/>
+                    <field name="course_id"/>
+                    <field name="duration"/>
+                    <field name="instructor"/>
+                    <field name="percentage_of_taken_seats" widget="progressbar"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_academy_session_form">
+            <field name="name">academy.session.form</field>
+            <field name="model">academy.session</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="active"/>
+                                <field name="name"/>
+                                <field name="course_id"/>
+                                <field name="instructor"/>
+                            </group>
+                            <group>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="duration"/>
+                                <field name="number_of_seats"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Attendees">
+                                <group>
+                                    <field name="percentage_of_taken_seats" widget="progressbar"/>
+                                </group>
+                                <field name="attendee_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_academy_session_search">
+            <field name="name">academy.session.search</field>
+            <field name="model">academy.session</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="course_id"/>
+                    <field name="instructor"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_academy_session">
+            <field name="name">Sessions</field>
+            <field name="res_model">academy.session</field>
+            <field name="view_mode">tree,form,calendar,graph,kanban</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_academy_session_calendar">
+            <field name="name">Sessions</field>
+            <field name="res_model">academy.session</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">calendar</field>
+            <field name="view_id" ref="view_academy_session_calendar"/>
+        </record>
+
+    </data>
+</odoo>

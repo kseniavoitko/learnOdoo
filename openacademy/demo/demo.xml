@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record id="object0" model="academy.course">
+            <field name="name">Python</field>
+            <field name="description">It's pytnon course!</field>
+        </record>
+
+        <record id="object1" model="academy.course">
+            <field name="name">Java</field>
+            <field name="description">It's java course!</field>
+        </record>
+
+        <record id="object2" model="academy.course">
+            <field name="name">C++</field>
+            <field name="description">It's C++ course!</field>
+        </record>
+    </data>
+</odoo>
