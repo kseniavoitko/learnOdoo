@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <template id="snippet_testimonial_opt" name="Snippet Testimonial Options" inherit_id="website.snippet_options">
+            <xpath expr="//div[@data-js='Box']" position="inside">
+                <div data-js="s_testimonial_options" data-selector=".s_testimonial"> <!-- Options group -->
+                    <we-select string="Testimonal options">
+                        <we-button data-select-class="shadow">Shadow Images</we-button>
+                        <we-button data-select-class="grey_bg">Grey Bg</we-button>
+                        <we-button data-select-class="">None</we-button>
+                    </we-select>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>
